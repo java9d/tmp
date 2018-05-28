@@ -1,0 +1,40 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="demos.css">
+<title>打印预览、选择打印机打印、直接打印</title>
+<script type="text/javascript" src="jcp.js"></script>
+<script>
+	function doPrint(how) {
+
+		var myDoc = {
+			documents : document, // 打印页面(div)们在本文档中
+			copyrights : '杰创软件拥有版权  www.jatools.com' // 版权声明必须
+		};
+		var jcp = getJCP();
+		// 调用打印方法
+		if (how == '打印预览')
+			jcp.printPreview(myDoc, false);
+		else if (how == "打印预览(显示进度条)") {
+			jcp.printPreview(myDoc, true);
+		} else if (how == '弹出打印机选择对话框打印') {
+			jcp.print(myDoc, true);
+		} else
+			jcp.print(myDoc, false); // 不弹出对话框打印
+
+	}
+</script>
+</head>
+<body>
+	<p>
+		<span class="title">打印预览、选择打印机打印、直接打印</span>
+	<a class="help" title="查看帮助..." target="_blank" href="/doc/htmlprint1.htm#_Toc509924777"></a></p>
+	<br>
+	<div id="page1">第一页(div#page1)</div>
+	<div id="page2">第二页(div#page2)</div>
+	<br>
+	<input type="button" value="打印预览" onclick="doPrint('打印预览')">
+	<input type="button" value="打印预览(显示进度条)" onclick="doPrint('打印预览(显示进度条)')">
+	<input type="button" value="弹出打印机选择对话框打印" onclick="doPrint('弹出打印机选择对话框打印')">
+	<input type="button" value="无对话框直接打印" onclick="doPrint('无对话框直接打印')">
+
+</body></html>
